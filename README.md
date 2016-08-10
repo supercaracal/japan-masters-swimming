@@ -2,7 +2,7 @@
 
 ## What's this?
 
-This is Japan masters swimming results. It is scraped from Japan Masters Swimming Association's site.
+This is Japan Masters Swimming Results. It is scraped from Japan Masters Swimming Association's site.
 
 ## Development
 

@@ -64,10 +64,6 @@ module Tasks
         millisecond = match_data[3]
         "#{second}.#{millisecond}".to_f
       end
-
-      def success?
-        @event_name.present? && @results.present?
-      end
     end
   end
 end

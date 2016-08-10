@@ -4,9 +4,11 @@ feature 'GET /' do
   given(:path) { root_path }
   background do
     event = FactoryGirl.create(:event)
+    event_free = FactoryGirl.create(:event, name: '男子100m自由形')
     team = FactoryGirl.create(:team)
     swimmer = FactoryGirl.create(:swimmer, team: team)
     FactoryGirl.create(:result, swimmer: swimmer, event: event)
+    FactoryGirl.create(:result, swimmer: swimmer, event: event_free, time: 46.91)
     visit path
   end
 
@@ -43,6 +45,8 @@ feature 'GET /' do
       aggregate_failures do
         expect(page).to have_content '男子200m自由形'
         expect(page).to have_content '1:46.19'
+        expect(page).to have_content '男子100m自由形'
+        expect(page).to have_content '46.91'
       end
     end
   end
