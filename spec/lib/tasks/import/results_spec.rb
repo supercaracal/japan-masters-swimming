@@ -29,6 +29,14 @@ describe 'Tasks::Import::Results' do
         subject { Result.all.count }
         it { is_expected.to be_positive }
       end
+
+      context 'when page is relay race' do
+        let(:page) { 7 }
+        describe '#execute' do
+          subject { Result.all.count }
+          it { is_expected.to be_zero }
+        end
+      end
     end
   end
 
