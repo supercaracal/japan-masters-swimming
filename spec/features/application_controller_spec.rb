@@ -17,9 +17,33 @@ feature 'GET /' do
   end
 
   feature 'GET /teams' do
-    background { click 'Teams' }
+    background { click_link 'Teams' }
     scenario 'Success to view teams' do
-      expect(page).to have_content 'JAPAN'
+      expect(page).to have_content 'JAPAN swimmers'
+    end
+  end
+
+  feature 'GET /teams/:team_id/swimmers' do
+    background do
+      click_link 'Teams'
+      click_link 'JAPAN swimmers'
+    end
+    scenario 'Success to view swimmers' do
+      expect(page).to have_content '萩野公介 results'
+    end
+  end
+
+  feature 'GET /teams/:team_id/swimmers/:swimmer_id/results' do
+    background do
+      click_link 'Teams'
+      click_link 'JAPAN swimmers'
+      click_link '萩野公介 results'
+    end
+    scenario 'Success to view results' do
+      aggregate_failures do
+        expect(page).to have_content '男子200m自由形'
+        expect(page).to have_content '1:46.19'
+      end
     end
   end
 end
