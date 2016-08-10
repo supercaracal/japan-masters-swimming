@@ -1,0 +1,14 @@
+- content_for :title, 'Teams'
+
+h3.m-t-1 Teams
+
+table.table.table-hover.m-t-1
+  thead
+    tr
+      th Name
+      th Swimmers
+  tbody
+    - @teams.each do |team|
+      tr
+        td = team.name
+        td = link_to "#{team.name} swimmers", team_swimmers_path(team_id: team.id)

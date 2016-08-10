@@ -1,0 +1,14 @@
+- content_for :title, "#{@team.name} swimmers"
+
+h3.m-t-1 = "#{@team.name} swimmers"
+
+table.table.table-hover.m-t-1
+  thead
+    tr
+      th Name
+      th Results
+  tbody
+    - @team.swimmers.each do |swimmer|
+      tr
+        td = swimmer.name
+        td = link_to "#{swimmer.name} results", team_swimmer_results_path(team_id: @team.id, swimmer_id: swimmer.id)

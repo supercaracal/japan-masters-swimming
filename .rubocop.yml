@@ -1,0 +1,30 @@
+LineLength:
+  Enabled: false
+
+Documentation:
+  Enabled: false
+
+AsciiComments:
+  Enabled: false
+
+LiteralInInterpolation:
+  Exclude:
+    - 'spec/**/*'
+
+NumericLiterals:
+  Enabled: false
+
+FrozenStringLiteralComment:
+  Enabled: false
+
+Rails:
+  Enabled: true
+
+AllCops:
+  TargetRubyVersion: 2.3
+  Exclude:
+    - '.bundle/**/*'
+    - 'vendor/bundle/**/*'
+    - 'bin/*'
+    - 'db/seeds.rb'
+    - 'db/schema.rb'

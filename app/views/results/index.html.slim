@@ -1,0 +1,21 @@
+- content_for :title, "#{@swimmer.name} #{@team.name} results"
+
+h3.m-t-1
+  = @swimmer.name
+  small.text-muted.m-l-1 = @team.name
+
+- @swimmer.results.group_by(&:event).each do |event, results|
+  .card.m-t-1
+    .card-header = event.name
+    .card-block
+      table.table.table-hover.m-t-1
+        thead
+          tr
+            th Year
+            th Result
+        tbody
+          - results.sort_by(&:year).reverse.each do |result|
+            tr
+              td = result.year
+              td = result.time_text
+      = line_chart @swimmer.results.where(event: event).group(:year).sum(:time)
