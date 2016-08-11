@@ -1,4 +1,8 @@
-- content_for :title, "#{@swimmer.name} #{@team.name} results"
+- set_meta_tags title: "#{@swimmer.name} #{@team.name}",
+  description: "These are #{@swimmer.name} #{@team.name} Japan Masters Swimming Results.",
+  keywords: "#{@swimmer.name}, #{@team.name}, swimmer, teams, #{default_meta_tags[:keywords]}"
+
+- breadcrumb :team_swimmer_results, @team, @swimmer
 
 h3.m-t-1
   = @swimmer.name

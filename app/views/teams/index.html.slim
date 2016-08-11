@@ -1,6 +1,10 @@
-- content_for :title, 'Teams'
+- set_meta_tags title: 'Teams',
+  description: 'These teams are participated in Japan Masters Swimming.',
+  keywords: "teams, #{default_meta_tags[:keywords]}"
 
-h3.m-t-1 Teams
+- breadcrumb :teams
+
+h3.m-t-1 = title
 
 table.table.table-hover.m-t-1
   thead
