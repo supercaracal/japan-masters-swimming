@@ -18,3 +18,18 @@
 //= require Chart.bundle
 //= require chartkick
 //= require_tree .
+
+(function($) {
+  'use strict';
+
+  $(function() {
+    var form = $('.js-swimmer-search-form');
+    var text = $('.js-input-swimmer-name');
+    var list = $('.js-filtered-swimmer-list');
+    var search = function(event) {
+      $.get(form.attr('action'), form.serialize(), function(data) { list.html(data); });
+    };
+    text.on('input propertychange paste', search);
+    text.focus();
+  });
+})(jQuery);

@@ -1,0 +1,2 @@
+- @swimmers.each do |swimmer|
+  = link_to "#{swimmer.name} #{swimmer.team.name}", team_swimmer_results_path(swimmer.team, swimmer), class: 'list-group-item list-group-item-action'
