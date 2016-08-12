@@ -31,4 +31,4 @@ $ bin/guard
 [![Build Status](https://travis-ci.org/supercaracal/japan-masters-swimming.svg?branch=master)](https://travis-ci.org/supercaracal/japan-masters-swimming)
 [![Code Climate](https://codeclimate.com/github/supercaracal/japan-masters-swimming/badges/gpa.svg)](https://codeclimate.com/github/supercaracal/japan-masters-swimming)
 [![Test Coverage](https://codeclimate.com/github/supercaracal/japan-masters-swimming/badges/coverage.svg)](https://codeclimate.com/github/supercaracal/japan-masters-swimming/coverage)
-[![Issue Count](https://codeclimate.com/github/supercaracal/japan-masters-swimming/badges/issue_count.svg)](https://codeclimate.com/github/supercaracal/japan-masters-swimming)
+[![Issue Count](https://codeclimate.com/github/supercaracal/japan-masters-swimming/badges/issue_count.svg)](https://codeclimate.com/github/supercaracal/japan-masters-swimming/issues)
