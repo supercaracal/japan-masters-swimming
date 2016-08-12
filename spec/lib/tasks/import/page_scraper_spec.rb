@@ -15,7 +15,7 @@ describe 'Tasks::Import::PageScraper' do
     end
   end
 
-  context "When a hobby swimmer's result included" do
+  context "When hobby swimmer's result included" do
     let(:event_name) { '男子100m自由形' }
     let(:team_name) { 'さいたまSC' }
     let(:swimmer_name) { '山田花太郎' }
@@ -30,7 +30,7 @@ describe 'Tasks::Import::PageScraper' do
     include_examples 'Can get scraped data'
   end
 
-  context "When a athlete swimmer's result included" do
+  context "When athlete swimmer's result included" do
     let(:event_name) { '男子100m自由形' }
     let(:team_name) { 'JAPAN' }
     let(:swimmer_name) { '萩野公介' }
