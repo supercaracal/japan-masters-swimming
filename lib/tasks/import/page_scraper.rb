@@ -8,7 +8,7 @@ module Tasks
       class ScrapingError < StandardError; end
 
       REGEXP_EVENT_NAME = /\ANo.\ *[0-9]+\ *(女子|男子)\ *([0-9]+m)\ *(自由形|平泳ぎ|背泳ぎ|バタフライ|個人メドレー)\z/
-      REGEXP_RESULT = /\A[0-9]*\ *([^(]+)\ *\((.+)\)\ *([0-9:.]+)\z/
+      REGEXP_RESULT = /\A[0-9]*\ *([^(]+)\ *\((.+)\)\ *([0-9:.]+).*\z/
       REGEXP_TIME = /\A([0-9]+:)?([0-9]+)\.([0-9]+)\z/
 
       attr_reader :event_name
