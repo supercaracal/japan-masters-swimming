@@ -14,7 +14,7 @@ namespace :import do
     processor = Tasks::Import::Results.new(host, scraper)
 
     (Array.wrap(args[:year]).presence || (2012..2016)).each do |year|
-      (Array.wrap(page[:page]).presence || (1..34)).each do |page|
+      (Array.wrap(args[:page]).presence || (1..34)).each do |page|
         path = "#{paths[year]}/#{format('%03d', page)}.HTM"
         processor.execute(path, year)
       end
