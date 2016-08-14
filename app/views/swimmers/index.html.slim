@@ -15,4 +15,4 @@ table.table.table-hover.m-t-1
     - @team.swimmers.each do |swimmer|
       tr
         td = swimmer.name
-        td = link_to "#{swimmer.name} results", team_swimmer_results_path(team_id: @team.id, swimmer_id: swimmer.id)
+        td = link_to "#{swimmer.name} results", swimmer_results_path(swimmer)

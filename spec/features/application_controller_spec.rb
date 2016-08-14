@@ -35,7 +35,7 @@ feature 'GET /' do
     end
   end
 
-  feature 'GET /teams/:team_id/swimmers/:swimmer_id/results' do
+  feature 'GET /swimmers/:swimmer_id/results' do
     background do
       click_link 'Teams'
       click_link 'JAPAN swimmers'

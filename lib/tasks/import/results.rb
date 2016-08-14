@@ -1,10 +1,9 @@
 module Tasks
   module Import
     class Results
-      def initialize(host, scraper, sleep_sec: 0.1)
+      def initialize(host, scraper)
         @host = host.freeze
         @scraper = scraper
-        @sleep_sec = sleep_sec
         @conn = Faraday.new(url: @host)
         @team_collection = TeamCollection.new
         @event_collection = EventCollection.new
@@ -13,7 +12,6 @@ module Tasks
       end
 
       def execute(path, year)
-        Rails.logger.info("Fetch #{@host}#{path}")
         html = fetch_page(path)
         data = @scraper.scrape(html)
         build_models(data, year)
@@ -27,7 +25,6 @@ module Tasks
       def fetch_page(path)
         response = @conn.get(path)
         raise "Failed to access at #{@host}#{path}." unless response.success?
-        sleep @sleep_sec
         response.body
       end
 

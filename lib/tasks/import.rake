@@ -14,6 +14,7 @@ namespace :import do
     processor = Tasks::Import::Results.new(host, scraper)
     year_range = 2012..2016
     page_range = 1..34
+    sleep_sec = 0.1
 
     (Array.wrap(args[:year]).presence || year_range).each do |year|
       year = year.to_i
@@ -22,7 +23,9 @@ namespace :import do
         page = page.to_i
         raise "Out of range page in #{page_range}" unless page.in?(page_range)
         path = "#{paths[year]}/#{format('%03d', page)}.HTM"
+        Rails.logger.info("Fetch #{host}#{path}")
         processor.execute(path, year)
+        sleep sleep_sec
       end
     end
   end

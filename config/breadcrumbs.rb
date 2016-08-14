@@ -12,9 +12,9 @@ crumb :team_swimmers do |team|
   parent :teams
 end
 
-crumb :team_swimmer_results do |team, swimmer|
-  link swimmer.name, team_swimmer_results_path(team, swimmer)
-  parent :team_swimmers, team
+crumb :swimmer_results do |swimmer|
+  link swimmer.name, swimmer_results_path(swimmer)
+  parent :team_swimmers, swimmer.team
 end
 
 # crumb :projects do

@@ -1,12 +1,12 @@
-- set_meta_tags title: "#{@swimmer.name} #{@team.name}",
-  description: "These are #{@swimmer.name} #{@team.name} Japan Masters Swimming Results.",
-  keywords: "#{@swimmer.name}, #{@team.name}, swimmer, teams, #{default_meta_tags[:keywords]}"
+- set_meta_tags title: "#{@swimmer.name} #{@swimmer.team.name}",
+  description: "These are #{@swimmer.name} #{@swimmer.team.name} Japan Masters Swimming Results.",
+  keywords: "#{@swimmer.name}, #{@swimmer.team.name}, swimmer, teams, #{default_meta_tags[:keywords]}"
 
-- breadcrumb :team_swimmer_results, @team, @swimmer
+- breadcrumb :swimmer_results, @swimmer
 
 h3.m-t-1
   = @swimmer.name
-  small.text-muted.m-l-1 = @team.name
+  small.text-muted.m-l-1 = @swimmer.team.name
 
 - @swimmer.results.group_by(&:event).each do |event, results|
   .card.m-t-1
