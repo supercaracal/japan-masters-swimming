@@ -1,54 +1,42 @@
 module Tasks
   module Import
     class Results
-      HOST = 'http://www.tdsystem.co.jp'.freeze
-      MIN_YEAR = 2014
-      MIN_PAGE = 1
-      MAX_PAGE = 34
-      SLEEP_SEC = 0.1
-
-      def initialize
-        @conn = Faraday.new(url: HOST)
+      def initialize(host, scraper, sleep_sec: 0.1)
+        @host = host.freeze
+        @scraper = scraper
+        @sleep_sec = sleep_sec
+        @conn = Faraday.new(url: @host)
         @team_collection = TeamCollection.new
         @event_collection = EventCollection.new
         @swimmer_collection = SwimmerCollection.new
         @result_collection = ResultCollection.new
       end
 
-      def execute(year: nil, page: nil, now: Time.zone.now)
-        (Array.wrap(year).presence || (MIN_YEAR..now.year)).each do |year_|
-          (Array.wrap(page).presence || (MIN_PAGE..MAX_PAGE)).each do |page_|
-            fetch_and_build_models(year_, page_)
-          end
-        end
+      def execute(path, year)
+        Rails.logger.info("Fetch #{@host}#{path}")
+        html = fetch_page(path)
+        data = @scraper.scrape(html)
+        build_models(data, year)
         import_models
+      rescue ScrapingError => err
+        Rails.logger.warn("Failed to scrape. Caused by #{err.message}.")
       end
 
       private
 
-      def fetch_and_build_models(year, page)
-        Rails.logger.info("Fetch year:#{year} page:#{page}")
-        html = fetch(year, page)
-        sleep SLEEP_SEC
-        data = PageScraper.new(html)
-        build_models(data, year)
-      rescue PageScraper::ScrapingError => err
-        Rails.logger.warn("Failed to scrape at year:#{year} page:#{page}. #{err.message}")
-      end
-
-      def fetch(year, page)
-        path = "/Masters/JM#{year}/#{format('%03d', page)}.HTM"
+      def fetch_page(path)
         response = @conn.get(path)
-        raise "Failed to access at #{HOST}#{path}." unless response.success?
+        raise "Failed to access at #{@host}#{path}." unless response.success?
+        sleep @sleep_sec
         response.body
       end
 
-      def build_models(page, year)
-        event = @event_collection.find_or_build(page.event_name)
-        page.results.each do |page_result|
-          team = @team_collection.find_or_build(page_result.team)
-          swimmer = @swimmer_collection.find_or_build(team, page_result.swimmer)
-          @result_collection.find_or_build(swimmer, event, year, page_result.time)
+      def build_models(data, year)
+        event = @event_collection.find_or_build(data.event_name)
+        data.results.each do |result|
+          team = @team_collection.find_or_build(result.team)
+          swimmer = @swimmer_collection.find_or_build(team, result.swimmer)
+          @result_collection.find_or_build(swimmer, event, year, result.time)
         end
       end
 
