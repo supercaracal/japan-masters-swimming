@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'GET /' do
+feature 'GET /', type: :feature do
   given(:path) { root_path }
   background do
     event = FactoryGirl.create(:event)
