@@ -12,9 +12,15 @@ namespace :import do
     host = 'http://www.tdsystem.co.jp'
     scraper = Tasks::Import::TdsystemScraper.new
     processor = Tasks::Import::Results.new(host, scraper)
+    year_range = 2012..2016
+    page_range = 1..34
 
-    (Array.wrap(args[:year]).presence || (2012..2016)).each do |year|
-      (Array.wrap(args[:page]).presence || (1..34)).each do |page|
+    (Array.wrap(args[:year]).presence || year_range).each do |year|
+      year = year.to_i
+      raise "Out of range year in #{year_range}" unless year.in?(year_range)
+      (Array.wrap(args[:page]).presence || page_range).each do |page|
+        page = page.to_i
+        raise "Out of range page in #{page_range}" unless page.in?(page_range)
         path = "#{paths[year]}/#{format('%03d', page)}.HTM"
         processor.execute(path, year)
       end
