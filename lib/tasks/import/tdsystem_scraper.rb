@@ -23,8 +23,10 @@ module Tasks
       def convert_to_simple_text(html, from_enc: Encoding::UTF_8, to_enc: Encoding::UTF_8)
         from_enc = NKF.guess(html)
         encoded_html = html.encode(to_enc, from_enc, invalid: :replace, undef: :replace, replace: '')
-        normalized_html = NKF.nkf('-m0Z1 -W -w', encoded_html.gsub(/[　\s ]+|&nbsp;/, ''))
-        strip_tags(normalized_html)
+        striped_html = encoded_html.gsub(/[　\s ]+|&nbsp;/, '')
+        normalized_html = NKF.nkf('-m0Z1 -W -w', striped_html)
+        # `strip_tags` method remove overrun string implicitly. So fuck'n method!
+        normalized_html.split('>').map { |row| "#{row}>" }.map { |row| strip_tags(row) }.join('')
       end
 
       def extract_event_name(text)
