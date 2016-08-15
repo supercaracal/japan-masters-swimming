@@ -3,8 +3,6 @@ require 'nkf'
 module Tasks
   module Import
     class TdsystemScraper
-      include ActionView::Helpers::SanitizeHelper
-
       REGEXP_EVENT_NAME = /No.[0-9]+(女子|男子)([0-9]+m)(自由形|平泳ぎ|背泳ぎ|バタフライ|個人メドレー)/
       REGEXP_RESULT = /[0-9]*歳?([^()0-9]+)\(([^()]+)\)([0-9]*:?[0-9]{1,2}\.[0-9]{1,2})/
       REGEXP_TIME = /([0-9]+:)?([0-9]+)\.([0-9]+)/
@@ -25,8 +23,7 @@ module Tasks
         encoded_html = html.encode(to_enc, from_enc, invalid: :replace, undef: :replace, replace: '')
         striped_html = encoded_html.gsub(/[　\s ]+|&nbsp;/, '')
         normalized_html = NKF.nkf('-m0Z1 -W -w', striped_html)
-        # `strip_tags` method remove overrun string implicitly. So fuck'n method!
-        normalized_html.split('>').map { |row| "#{row}>" }.map { |row| strip_tags(row) }.join('')
+        normalized_html.gsub(/<[^<>]+>/, '')
       end
 
       def extract_event_name(text)
