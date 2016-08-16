@@ -7,7 +7,7 @@ SitemapGenerator::Sitemap.create do
   add teams_path, changefreq: 'yearly'
 
   Team.find_each do |team|
-    add team_swimmers_path(team), priority: 0.7,changefreq: 'yearly'
+    add team_swimmers_path(team), priority: 0.7, changefreq: 'yearly'
   end
 
   Swimmer.find_each do |swimmer|
