@@ -61,6 +61,7 @@ group :development do
   # gem 'listen', '~> 3.0.5'
   gem 'rb-readline'
   gem 'pry-rails'
+  gem 'sitemap_generator'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
