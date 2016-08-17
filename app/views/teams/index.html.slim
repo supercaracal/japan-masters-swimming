@@ -4,15 +4,10 @@
 
 - breadcrumb :teams
 
-h3.m-t-1 = title
+h3.m-y-1 = title
 
-table.table.table-hover.m-t-1
-  thead
-    tr
-      th Name
-      th Swimmers
-  tbody
-    - @teams.each do |team|
-      tr
-        td = team.name
-        td = link_to "#{team.name} swimmers", team_swimmers_path(team_id: team.id)
+- @teams.each_slice(4) do |teams|
+  .row
+    - teams.each do |team|
+      .col-md-3
+        span = link_to team.name, team_swimmers_path(team_id: team.id)
