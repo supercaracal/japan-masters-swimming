@@ -21,25 +21,25 @@ feature 'GET /', type: :feature do
   feature 'GET /teams' do
     background { click_link 'Teams' }
     scenario 'Success to view teams' do
-      expect(page).to have_content 'JAPAN swimmers'
+      expect(page).to have_content 'JAPAN'
     end
   end
 
   feature 'GET /teams/:team_id/swimmers' do
     background do
       click_link 'Teams'
-      click_link 'JAPAN swimmers'
+      click_link 'JAPAN'
     end
     scenario 'Success to view swimmers' do
-      expect(page).to have_content '萩野公介 results'
+      expect(page).to have_content '萩野公介'
     end
   end
 
   feature 'GET /swimmers/:swimmer_id/results' do
     background do
       click_link 'Teams'
-      click_link 'JAPAN swimmers'
-      click_link '萩野公介 results'
+      click_link 'JAPAN'
+      click_link '萩野公介'
     end
     scenario 'Success to view results' do
       aggregate_failures do
