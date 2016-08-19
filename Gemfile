@@ -48,7 +48,7 @@ group :development, :test do
   gem 'guard-rspec'
   gem 'guard-rubocop'
   gem 'factory_girl_rails'
-  gem 'capybara', git: 'https://github.com/jnicklas/capybara.git'
+  gem 'capybara'
 end
 
 group :test do
