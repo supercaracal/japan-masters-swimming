@@ -31,8 +31,10 @@ body {
   border-radius: 0;
 }
 
+$color-smoky: #f5f5f5;
+
 .global-footer {
-  background-color: #f5f5f5;
+  background-color: $color-smoky;
   height: 60px;
   padding-top: 20px;
 }
