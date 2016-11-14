@@ -1,5 +1,0 @@
-#!/bin/bash
-
-for year in $(seq 2012 2016); do
-  heroku run rake import:results[${year}] --app japan-masters-swimming
-done
