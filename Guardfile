@@ -26,6 +26,7 @@
 #  * zeus: 'zeus rspec' (requires the server to be started separately)
 #  * 'just' rspec: 'rspec'
 
+# rubocop:disable Metrics/BlockLength
 guard :rspec, cmd: 'bundle exec rspec' do
   require 'guard/rspec/dsl'
   dsl = Guard::RSpec::Dsl.new(self)
@@ -70,6 +71,7 @@ guard :rspec, cmd: 'bundle exec rspec' do
     Dir[File.join("**/#{m[1]}.feature")][0] || 'spec/acceptance'
   end
 end
+# rubocop:enable Metrics/BlockLength
 
 guard :rubocop, all_on_start: false, cli: ['--format', 'clang'] do
   watch(/.+\.rb\z/)

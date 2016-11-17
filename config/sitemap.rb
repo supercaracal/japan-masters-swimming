@@ -1,5 +1,5 @@
 # Set the host name for URL creation
-SitemapGenerator::Sitemap.default_host = 'https://japan-masters-swimming.herokuapp.com'
+SitemapGenerator::Sitemap.default_host = 'http://japan-masters-swimming.japaneast.cloudapp.azure.com'
 
 SitemapGenerator::Sitemap.create do
   add root_path, changefreq: 'yearly'
