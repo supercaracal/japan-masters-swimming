@@ -43,6 +43,25 @@ describe 'Tasks::Import::TdsystemScraper' do
     include_examples 'Can get scraped data'
   end
 
+  context 'When no one win a prize' do
+    let(:event_name) { '女子400m自由形' }
+    let(:results) do
+      [
+        OpenStruct.new(swimmer: '六波羅探題', team: 'CIA愛国', time: 1576.81)
+      ]
+    end
+    let(:html) do
+      <<-EOS
+        <font face='ＤＦ平成明朝体W7' color='#000000' size='4'>No.&nbsp;13&nbsp;女子　400m&nbsp;自由形　　　　　&nbsp;</font>
+        <font face='ＤＦ平成明朝体W7' color='#000000' size='4'>85～84歳<BR></font>
+        ------------------------------------------------------------ ここまで入賞<BR>
+        <font face='ＭＳ 明朝' color='#000000' size='3'>　&nbsp;　六波羅探題　　　(ＣＩＡ愛国　)<B>&nbsp;26:16.81</B>&nbsp;</font>
+      EOS
+    end
+
+    include_examples 'Can get scraped data'
+  end
+
   context "When athlete swimmer's result included" do
     let(:event_name) { '男子100m自由形' }
     let(:results) do
