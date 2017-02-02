@@ -1,5 +1,6 @@
 require 'rails_helper'
 
+# rubocop:disable Metrics/BlockLength
 feature 'GET /', type: :feature do
   given(:path) { root_path }
   background do

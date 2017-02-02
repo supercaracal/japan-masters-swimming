@@ -1,5 +1,6 @@
 require 'rails_helper'
 
+# rubocop:disable Metrics/BlockLength
 describe 'Tasks::Import::Results' do
   let(:host) { 'http://www.tdsystem.co.jp' }
   let(:scraper) { Tasks::Import::TdsystemScraper.new }
