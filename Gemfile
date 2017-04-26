@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.4.0'
+ruby '2.4.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails'
@@ -63,9 +63,6 @@ group :development do
   gem 'rb-readline'
   gem 'sitemap_generator'
 end
-
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'chartkick'
 gem 'faraday'

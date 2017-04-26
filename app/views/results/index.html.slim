@@ -4,15 +4,15 @@
 
 - breadcrumb :swimmer_results, @swimmer
 
-h3.m-t-1
+h3
   = @swimmer.name
-  small.text-muted.m-l-1 = @swimmer.team.name
+  small.text-muted.ml-2 = @swimmer.team.name
 
 - @swimmer.results.group_by(&:event).each do |event, results|
-  .card.m-t-1
+  .card.mt-3
     .card-header = event.name
     .card-block
-      table.table.table-hover.m-t-1
+      table.table.table-hover
         thead
           tr
             th Year

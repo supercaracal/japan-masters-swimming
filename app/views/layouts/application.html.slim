@@ -11,9 +11,9 @@ html lang="ja"
     = render partial: 'layouts/google_analytics'
   body
     .content-wrap
-      .navbar.navbar-dark.bg-inverse.global-header
+      .navbar.navbar-inverse.bg-inverse.global-header
         = link_to 'Japan Masters Swimming Results', root_path, class: 'navbar-brand'
-      .container-fluid
+      .container-fluid.pt-3.pb-3
         = render partial: 'layouts/breadcrumbs'
         = yield
     .global-footer

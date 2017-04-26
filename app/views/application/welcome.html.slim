@@ -1,13 +1,13 @@
-.jumbotron.m-t-1
+.jumbotron
   h3 Freestyle, Breaststroke, Backstroke, Butterfly, and Individual Medley
   p.lead You can show the Japan Masters Swimming Results for each team.
-  hr.m-y-2
+  hr
   p.lead = link_to 'Show Teams', teams_path, class: 'btn btn-primary btn-lg'
 
 = form_tag swimmer_names_path, method: :get, class: 'row js-swimmer-search-form', remote: true do
   .col-md-12
     = text_field_tag 'swimmer[name]', nil, class: 'form-control form-control-lg js-input-swimmer-name', placeholder: 'Search a Swimmer'
 
-.row.m-t-2.m-b-1
+.row
   .col-md-12
     .list-group.js-filtered-swimmer-list
