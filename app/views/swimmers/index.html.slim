@@ -6,7 +6,7 @@
 
 h3 = title
 
-- @team.swimmers.each_slice(3) do |swimmers|
+- @team.swimmers.order(:name).each_slice(3) do |swimmers|
   .row
     - swimmers.each do |swimmer|
       .col-md-4
