@@ -4,10 +4,22 @@
 
 - breadcrumb :teams
 
-h3 = title
+h3#team-header = title
 
-- @teams.each_slice(4) do |teams|
+- grouped_teams = @teams.group_by { |team| team.name.first }
+
+ul.pagination.mt-3.team-anchor
+  - grouped_teams.keys.each do |initial|
+    li.page-item
+      = link_to initial, teams_path(anchor: "team-initial-#{initial}"), class: 'page-link'
+
+- grouped_teams.each do |initial, same_initial_teams|
   .row
-    - teams.each do |team|
-      .col-md-3
-        span = link_to team.name, team_swimmers_path(team_id: team.id)
+    .col-md-12
+      span.badge.badge-default id="team-initial-#{initial}" = initial
+      a href="#team-header" &uarr;
+  - same_initial_teams.each_slice(4) do |teams|
+    .row
+      - teams.each do |team|
+        .col-md-3
+          span = link_to team.name, team_swimmers_path(team_id: team.id)
