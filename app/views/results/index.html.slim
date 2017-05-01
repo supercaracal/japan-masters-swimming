@@ -21,5 +21,5 @@ h3
           - results.sort_by(&:year).reverse.each do |result|
             tr
               td = result.year
-              td = result.time_text
+              td = format_result_time(result.time)
       = line_chart @swimmer.results.where(event: event).group(:year).sum(:time)

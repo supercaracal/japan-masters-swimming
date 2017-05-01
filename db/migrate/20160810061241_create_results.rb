@@ -9,6 +9,6 @@ class CreateResults < ActiveRecord::Migration[5.0]
       t.timestamps
     end
 
-    add_index :results, %i(year event_id swimmer_id), unique: true
+    add_index :results, %i[year event_id swimmer_id], unique: true
   end
 end

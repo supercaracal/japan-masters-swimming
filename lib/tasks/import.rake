@@ -1,7 +1,7 @@
 # rubocop:disable Metrics/BlockLength
 namespace :import do
   desc 'Import Japan Masters Swimming Results'
-  task :results, %i(year page) => :environment do |_task, args|
+  task :results, %i[year page] => :environment do |_task, args|
     paths = {
       2012 => '/JAPANMASTERS2012',
       2013 => '/JapanMasters/2013',

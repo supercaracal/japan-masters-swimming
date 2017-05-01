@@ -7,6 +7,6 @@ class CreateSwimmers < ActiveRecord::Migration[5.0]
       t.timestamps
     end
 
-    add_index :swimmers, %i(name team_id), unique: true
+    add_index :swimmers, %i[name team_id], unique: true
   end
 end
