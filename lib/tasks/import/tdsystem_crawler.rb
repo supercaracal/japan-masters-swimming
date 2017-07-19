@@ -2,6 +2,7 @@ module Tasks
   module Import
     class TdsystemCrawler
       HOST = 'http://www.tdsystem.co.jp'.freeze
+      PROXY = 'http://125.1.224.236:80'.freeze
 
       BASE_PATHS = {
         2012 => '/JAPANMASTERS2012',
@@ -35,7 +36,7 @@ module Tasks
       end
 
       def initialize
-        @conn = Faraday.new(url: HOST)
+        @conn = Faraday.new(url: HOST, proxy: PROXY)
         @team_collection = TeamCollection.new
         @event_collection = EventCollection.new
         @swimmer_collection = SwimmerCollection.new
