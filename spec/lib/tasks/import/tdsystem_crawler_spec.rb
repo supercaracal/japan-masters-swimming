@@ -4,6 +4,7 @@ require 'rails_helper'
 describe Tasks::Import::TdsystemCrawler do
   describe '::crawl' do
     before { described_class.crawl(year: year, page: page) }
+    after { sleep 1 }
     subject { Result.all.count }
 
     context 'When year is 2011' do
