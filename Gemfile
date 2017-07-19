@@ -62,7 +62,6 @@ group :development do
   # gem 'listen', '~> 3.0.5'
   gem 'pry-rails'
   gem 'rb-readline'
-  gem 'sitemap_generator'
 end
 
 gem 'chartkick'
@@ -70,4 +69,5 @@ gem 'faraday'
 gem 'gretel'
 gem 'meta-tags'
 gem 'nokogiri'
+gem 'sitemap_generator'
 gem 'slim-rails'
