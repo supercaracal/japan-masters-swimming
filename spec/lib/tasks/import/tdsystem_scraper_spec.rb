@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 # rubocop:disable Metrics/BlockLength
-describe 'Tasks::Import::TdsystemScraper' do
-  let(:scraper) { Tasks::Import::TdsystemScraper.new }
+describe Tasks::Import::TdsystemScraper do
+  let(:scraper) { described_class.new }
   let(:data) { scraper.scrape(html) }
 
   shared_examples 'Can get scraped data' do
