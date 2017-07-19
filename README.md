@@ -18,6 +18,7 @@ These are results of the Japan Masters Swimming Championships. It is scraped fro
 * [第31回日本マスターズ水泳選手権大会 2014年7月18日(金)から7月21日(月) 会場:横浜国際プール 50m](http://www.tdsystem.co.jp/Masters/JM2014/PRO.HTM)
 * [第32回日本マスターズ水泳選手権大会 2015年7月16日(木)から7月20日(月) 会場:東京辰巳国際水泳場 50m](http://www.tdsystem.co.jp/Masters/JM2015/PRO.HTM)
 * [第33回日本マスターズ水泳選手権大会 2016年7月14日(木)から7月18日(月) 会場:千葉県国際総合水泳場 50m](http://www.tdsystem.co.jp/Masters/JM2016/PRO.HTM)
+* [第34回日本マスターズ水泳選手権大会 2017年7月14日(金)から7月17日(月) 会場:東和薬品RACTABドーム 50m](http://www.tdsystem.co.jp/Masters/JM2017/PRO.HTM)
 
 ## Development
 
