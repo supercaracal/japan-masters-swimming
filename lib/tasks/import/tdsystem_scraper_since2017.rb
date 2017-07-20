@@ -7,7 +7,7 @@ module Tasks
         doc = Nokogiri::HTML(encode(html))
         event_name = extract_event_name(doc)
         results = extract_results(doc)
-        return if event_name&.index('リレー') || event_name.blank? || results.blank?
+        return if event_name.blank? || results.blank? || event_name.index('リレー')
         OpenStruct.new(event_name: event_name, results: results)
       end
 

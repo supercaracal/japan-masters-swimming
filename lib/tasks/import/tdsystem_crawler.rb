@@ -10,7 +10,7 @@ module Tasks
         2014 => '/Masters/JM2014',
         2015 => '/Masters/JM2015',
         2016 => '/Masters/JM2016',
-        2017 => 'Record.php?S=1&G=4&P='
+        2017 => '/Record.php?S=1&G=4&P='
       }.freeze
 
       YEARS = BASE_PATHS.keys.freeze
