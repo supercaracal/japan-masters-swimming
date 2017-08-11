@@ -3,8 +3,23 @@ require 'rails_helper'
 # rubocop:disable Metrics/BlockLength
 describe Tasks::Import::TdsystemCrawler do
   describe '::crawl' do
-    before { described_class.crawl(year: year, page: page) }
+    before do
+      stubs = Faraday::Adapter::Test::Stubs.new
+      stubs.get('/JAPANMASTERS2012/001.HTM') { |_env| [200, {}, read_fixture_file('tdsystem_breast_stroke_100m_woman_2012.html')] }
+      stubs.get('/JapanMasters/2013/001.HTM') { |_env| [200, {}, read_fixture_file('tdsystem_breast_stroke_100m_woman_2013.html')] }
+      stubs.get('/Masters/JM2014/001.HTM') { |_env| [200, {}, read_fixture_file('tdsystem_breast_stroke_100m_woman_2014.html')] }
+      stubs.get('/Masters/JM2015/001.HTM') { |_env| [200, {}, read_fixture_file('tdsystem_breast_stroke_100m_woman_2015.html')] }
+      stubs.get('/Masters/JM2016/001.HTM') { |_env| [200, {}, read_fixture_file('tdsystem_free_style_400m_woman_2016.html')] }
+      stubs.get('/Masters/JM2016/007.HTM') { |_env| [200, {}, read_fixture_file('tdsystem_free_style_relay_200m_2016.html')] }
+      stubs.get('/Record.php?G=4&P=1&S=1') { |_env| [200, {}, read_fixture_file('tdsystem_breast_stroke_100m_woman_2017.html')] }
+      test = Faraday.new { |builder| builder.adapter :test, stubs }
+      allow(Faraday).to receive(:new) { test }
+
+      described_class.crawl(year: year, page: page)
+    end
+
     after { sleep 1 }
+
     subject { Result.all.count }
 
     context 'When year is 2011' do

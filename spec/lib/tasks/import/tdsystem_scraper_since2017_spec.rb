@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe Tasks::Import::TdsystemScraperSince2017 do
   let(:html) do
-    File.open(Rails.root.join('spec', 'fixtures', 'tdsystem_freestyle_100m_man_2017.html'), &:read)
+    read_fixture_file('tdsystem_free_style_100m_man_2017.html')
   end
 
   describe '#scrape' do
