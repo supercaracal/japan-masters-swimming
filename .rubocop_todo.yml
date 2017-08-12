@@ -1,0 +1,6 @@
+---
+ExampleLength:
+  Enabled: false
+
+NestedGroups:
+  Enabled: false

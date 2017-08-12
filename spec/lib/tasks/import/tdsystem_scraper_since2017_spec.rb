@@ -16,7 +16,7 @@ describe Tasks::Import::TdsystemScraperSince2017 do
 
     let(:scraped_data) { described_class.new.scrape(html) }
 
-    it 'should get scraped data' do
+    it 'gets scraped data' do
       aggregate_failures do
         expect(scraped_data.event_name).to eq '男子100m自由形'
         expect(scraped_data.results).to include(*expected_results)

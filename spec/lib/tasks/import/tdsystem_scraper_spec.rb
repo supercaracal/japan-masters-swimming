@@ -8,11 +8,13 @@ describe Tasks::Import::TdsystemScraper do
   shared_examples 'Can get scraped data' do
     describe 'Can get a event name' do
       subject { data.event_name }
+
       it { is_expected.to eq event_name }
     end
 
     describe 'Can get results' do
       subject { data.results }
+
       it { is_expected.to include(*results) }
     end
   end
