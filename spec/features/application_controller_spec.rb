@@ -1,9 +1,10 @@
 require 'rails_helper'
 
 # rubocop:disable Metrics/BlockLength
-feature 'GET /', type: :feature do
-  given(:path) { root_path }
-  background do
+describe 'GET /', type: :feature do
+  let(:path) { root_path }
+
+  before do
     event = FactoryGirl.create(:event)
     event_free = FactoryGirl.create(:event, name: '男子100m自由形')
     team = FactoryGirl.create(:team)
@@ -13,36 +14,36 @@ feature 'GET /', type: :feature do
     visit path
   end
 
-  feature 'Can link to teams' do
-    scenario 'Success to view top' do
+  describe 'Can link to teams' do
+    it 'Success to view top' do
       expect(page).to have_content 'Teams'
     end
   end
 
-  feature 'GET /teams' do
-    background { click_link 'Teams' }
-    scenario 'Success to view teams' do
+  describe 'GET /teams' do
+    before { click_link 'Teams' }
+    it 'Success to view teams' do
       expect(page).to have_content 'JAPAN'
     end
   end
 
-  feature 'GET /teams/:team_id/swimmers' do
-    background do
+  describe 'GET /teams/:team_id/swimmers' do
+    before do
       click_link 'Teams'
       click_link 'JAPAN'
     end
-    scenario 'Success to view swimmers' do
+    it 'Success to view swimmers' do
       expect(page).to have_content '萩野公介'
     end
   end
 
-  feature 'GET /swimmers/:swimmer_id/results' do
-    background do
+  describe 'GET /swimmers/:swimmer_id/results' do
+    before do
       click_link 'Teams'
       click_link 'JAPAN'
       click_link '萩野公介'
     end
-    scenario 'Success to view results' do
+    it 'Success to view results' do
       aggregate_failures do
         expect(page).to have_content '男子200m自由形'
         expect(page).to have_content '1:46.19'
