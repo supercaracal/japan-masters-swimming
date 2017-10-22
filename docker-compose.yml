@@ -9,6 +9,7 @@ services:
       - "REPO=https://github.com/supercaracal/japan-masters-swimming.git"
       - "BRANCH=master"
       - "RAILS_ENV=production"
+      - "HOST_DB=db"
     ports:
       - "${PORT_AP}:80"
   db:
