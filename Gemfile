@@ -19,6 +19,7 @@ gem 'uglifier'
 
 group :development, :test do
   gem 'capybara'
+  gem 'dotenv-rails'
   gem 'factory_girl_rails'
   gem 'guard-rspec'
   gem 'guard-rubocop'

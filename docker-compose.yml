@@ -1,0 +1,20 @@
+---
+version: "3"
+services:
+  ap:
+    image: "supercaracal/amazon-linux-rails-app"
+    depends_on:
+      - "db"
+    environment:
+      - "REPO=https://github.com/supercaracal/japan-masters-swimming.git"
+      - "BRANCH=master"
+      - "RAILS_ENV=production"
+    ports:
+      - "${PORT_AP}:80"
+  db:
+    build:
+      context: "./docker/db"
+      args:
+        - "BASE_BACKUP_FILE=swim_db_basebackup_${BASE_BACKUP_DATE}.tar.gz"
+    ports:
+      - "${PORT_DB}:5432"
