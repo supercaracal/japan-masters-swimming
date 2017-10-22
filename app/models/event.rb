@@ -21,7 +21,7 @@ class Event < ApplicationRecord
       sub.no <= 10
   SQL
 
-  has_many :results
+  has_many :results, dependent: :restrict_with_exception
 
   validates :name, presence: true, uniqueness: true, length: { maximum: 255 }
 

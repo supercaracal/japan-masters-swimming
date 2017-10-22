@@ -13,7 +13,7 @@ module Tasks
 
       private
 
-      def encode(html, from_enc: Encoding::UTF_8, to_enc: Encoding::UTF_8)
+      def encode(html, to_enc: Encoding::UTF_8)
         from_enc = NKF.guess(html)
         html.encode(to_enc, from_enc, invalid: :replace, undef: :replace, replace: '')
       end

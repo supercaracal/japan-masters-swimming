@@ -5,7 +5,7 @@ describe 'GET /swimmer_names', type: :request do
     team = FactoryGirl.create(:team, name: '鯖の塩焼き')
     FactoryGirl.create(:swimmer, team: team, name: '山田太郎')
     FactoryGirl.create(:swimmer, team: team, name: '伊藤次郎')
-    get "#{swimmer_names_path}?#{URI.encode('swimmer[name]')}=#{URI.encode(name_prefix)}"
+    get "#{swimmer_names_path}?#{CGI.escape('swimmer[name]')}=#{CGI.escape(name_prefix)}"
   end
 
   subject { response.body }

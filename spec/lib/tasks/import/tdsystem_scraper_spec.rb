@@ -31,7 +31,7 @@ describe Tasks::Import::TdsystemScraper do
       ]
     end
     let(:html) do
-      <<-EOS
+      <<-HTML
         <font face='ＤＦ平成明朝体W7' color='#000000' size='4'>No.&nbsp;13&nbsp;男子　100m&nbsp;自由形　　　　　&nbsp;</font>
         <font face='ＤＦ平成明朝体W7' color='#000000' size='4'>100～104歳<BR></font>
         <font face='ＭＳ 明朝' color='#000000' size='3'>　 　斎藤　一　　　　(新撰組ＳＣ)<B>　1:10.01</B>&nbsp;</font>
@@ -40,7 +40,7 @@ describe Tasks::Import::TdsystemScraper do
         <font face='ＭＳ 明朝' color='#000000' size='3'>　3　山田　三郎　　　(だんごＳＣ)<B>　1:33.90</B>&nbsp;</font>
         ------------------------------------------------------------ ここまで入賞<BR>
         <font face='ＭＳ 明朝' color='#000000' size='3'>　&nbsp;　山田　花太郎　　　(ダ・埼玉　　)<B>　1:40.37</B>&nbsp;</font>
-      EOS
+      HTML
     end
 
     include_examples 'Can get scraped data'
@@ -54,12 +54,12 @@ describe Tasks::Import::TdsystemScraper do
       ]
     end
     let(:html) do
-      <<-EOS
+      <<-HTML
         <font face='ＤＦ平成明朝体W7' color='#000000' size='4'>No.&nbsp;13&nbsp;女子　400m&nbsp;自由形　　　　　&nbsp;</font>
         <font face='ＤＦ平成明朝体W7' color='#000000' size='4'>85～84歳<BR></font>
         ------------------------------------------------------------ ここまで入賞<BR>
         <font face='ＭＳ 明朝' color='#000000' size='3'>　&nbsp;　六波羅探題　　　(ＣＩＡ愛国　)<B>&nbsp;26:16.81</B>&nbsp;</font>
-      EOS
+      HTML
     end
 
     include_examples 'Can get scraped data'
@@ -75,14 +75,14 @@ describe Tasks::Import::TdsystemScraper do
       ]
     end
     let(:html) do
-      <<-EOS
+      <<-HTML
         <font face='ＤＦ平成明朝体W7' color='#000000' size='4'>No.&nbsp;13&nbsp;男子　100m&nbsp;自由形　　　　　&nbsp;</font>
         <font face='ＤＦ平成明朝体W7' color='#000000' size='4'>18～24歳<BR></font>
         <font face='ＭＳ 明朝' color='#000000' size='3'>　1　萩野　　公介　　　(ＪＡＰＡＮ)<B>　46.39</B>&nbsp;･世界新</font>
         <font face='ＭＳ 明朝' color='#000000' size='3'>　&nbsp;　呂布　　奉先　　　(赤兎愛好会)<B>　46.51</B>&nbsp;･日本新</font>
         ------------------------------------------------------------ ここまで入賞<BR>
         <font face='ＭＳ 明朝' color='#000000' size='3'>　&nbsp;　関羽　　雲長　　　(三国ＳＣ　)<B>　47.02</B>&nbsp;･大会新</font>
-      EOS
+      HTML
     end
 
     include_examples 'Can get scraped data'

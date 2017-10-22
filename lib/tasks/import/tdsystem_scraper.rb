@@ -18,7 +18,7 @@ module Tasks
 
       private
 
-      def convert_to_simple_text(html, from_enc: Encoding::UTF_8, to_enc: Encoding::UTF_8)
+      def convert_to_simple_text(html, to_enc: Encoding::UTF_8)
         from_enc = NKF.guess(html)
         encoded_html = html.encode(to_enc, from_enc, invalid: :replace, undef: :replace, replace: '')
         striped_html = encoded_html.gsub(/[　\s ]+|&nbsp;/, '')
