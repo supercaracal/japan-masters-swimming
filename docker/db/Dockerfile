@@ -1,14 +1,8 @@
 FROM postgres:9.5
 
+COPY ./entrypoint.sh /docker-entrypoint-initdb.d/swim-db-entrypoint.sh
+
 ARG BASE_BACKUP_FILE=""
-
 ENV BASEBACKUP_FILE "/tmp/basebackup.tar.gz"
-ENV CONF_FILE "/tmp/postgresql.conf"
-ENV HBA_FILE "/tmp/pg_hba.conf"
-
-COPY ./entrypoint.sh                         /docker-entrypoint-initdb.d/swim-db-entrypoint.sh
 COPY ./base_backup_files/${BASE_BACKUP_FILE} ${BASEBACKUP_FILE}
-COPY ./postgresql.conf                       ${CONF_FILE}
-COPY ./pg_hba.conf                           ${HBA_FILE}
-
-RUN chown postgres:postgres ${BASEBACKUP_FILE} ${CONF_FILE} ${HBA_FILE}
+RUN chown postgres:postgres ${BASEBACKUP_FILE}
