@@ -1,14 +1,12 @@
 FROM postgres:9.6
 
-MAINTAINER Taishi Kasuga
-
 ARG BASE_BACKUP_FILE=""
-COPY ./base_backup_files/${BASE_BACKUP_FILE} /var/lib/postgresql/
-RUN rm -rf /var/lib/postgresql/data/*                                            \
-  && tar zxf /var/lib/postgresql/${BASE_BACKUP_FILE} -C /var/lib/postgresql/data \
-  && chown -R postgres:postgres /var/lib/postgresql/data                         \
-  && chmod 700 /var/lib/postgresql/data                                          \
-  && rm /var/lib/postgresql/${BASE_BACKUP_FILE}
 
-COPY ./postgresql.conf /etc/postgresql/
-COPY ./pg_hba.conf     /etc/postgresql/
+ENV BASEBACKUP_FILE "/tmp/basebackup.tar.gz"
+ENV CONF_FILE "/tmp/postgresql.conf"
+ENV HBA_FILE "/tmp/pg_hba.conf"
+
+COPY ./entrypoint.sh                         /docker-entrypoint-initdb.d/swim-db-entrypoint.sh
+COPY ./base_backup_files/${BASE_BACKUP_FILE} ${BASEBACKUP_FILE}
+COPY ./postgresql.conf                       ${CONF_FILE}
+COPY ./pg_hba.conf                           ${HBA_FILE}
