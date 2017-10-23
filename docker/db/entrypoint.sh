@@ -6,11 +6,3 @@ if [ -e "${BASEBACKUP_FILE}" ]; then
   chmod 700 ${PGDATA}
   rm ${BASEBACKUP_FILE}
 fi
-
-if [ -e "${CONF_FILE}" ]; then
-  #cp -f ${CONF_FILE} /etc/postgresql/
-fi
-
-if [ -e "${HBA_FILE}" ]; then
-  #cp -f ${HBA_FILE} /etc/postgresql/
-fi

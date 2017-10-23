@@ -1,4 +1,4 @@
-FROM postgres:9.6
+FROM postgres:9.5
 
 ARG BASE_BACKUP_FILE=""
 
@@ -10,3 +10,5 @@ COPY ./entrypoint.sh                         /docker-entrypoint-initdb.d/swim-db
 COPY ./base_backup_files/${BASE_BACKUP_FILE} ${BASEBACKUP_FILE}
 COPY ./postgresql.conf                       ${CONF_FILE}
 COPY ./pg_hba.conf                           ${HBA_FILE}
+
+RUN chown postgres:postgres ${BASEBACKUP_FILE} ${CONF_FILE} ${HBA_FILE}
