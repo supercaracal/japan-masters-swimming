@@ -8,8 +8,6 @@ services:
         - "BASE_BACKUP_FILE=swim_db_basebackup_${BASE_BACKUP_DATE}.tar.gz"
     environment:
       - "POSTGRES_PASSWORD=${POSTGRES_PASSWORD}"
-    ports:
-      - "${DB_PORT}:5432"
   web:
     image: "supercaracal/amazon-linux-rails-app"
     depends_on:
@@ -20,7 +18,6 @@ services:
       - "RAILS_ENV=production"
       - "SECRET_KEY_BASE=${SECRET_KEY_BASE}"
       - "DB_HOST=db"
-      - "DB_PORT=${DB_PORT}"
       - "DB_PASSWORD=${POSTGRES_PASSWORD}"
     ports:
       - "${WEB_PORT}:80"
