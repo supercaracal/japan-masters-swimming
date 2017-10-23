@@ -15,8 +15,8 @@ RUN localedef -i ja_JP -c -f UTF-8 -A /usr/share/locale/locale.alias ja_JP.UTF-8
   && tar zxf /tmp/${BASE_BACKUP_DATE}.tar.gz -C ${DATA_DIR}                      \
   && rm /tmp/${BASE_BACKUP_DATE}.tar.gz                                          \
   && mv -f /tmp/postgresql.conf ${DATA_DIR}/                                     \
-  && mv -f /tmp/pg_hba.conf ${DATA_DIR}                                          \
+  && mv -f /tmp/pg_hba.conf ${DATA_DIR}/                                         \
   && chmod 700 ${DATA_DIR}                                                       \
   && chown -R postgres:postgres ${DATA_DIR}
 
-CMD ["postgres", "-D", "${DATA_DIR}"]
+CMD ["postgres", "-D", "/var/lib/postgresql/swim"]
