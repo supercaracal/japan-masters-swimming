@@ -5,7 +5,7 @@ services:
     build:
       context: "./docker/db"
       args:
-        - "BASE_BACKUP_FILE=swim_db_basebackup_${BASE_BACKUP_DATE}.tar.gz"
+        - "BASE_BACKUP_DATE=${BASE_BACKUP_DATE}"
     environment:
       - "POSTGRES_PASSWORD=${POSTGRES_PASSWORD}"
   web:
