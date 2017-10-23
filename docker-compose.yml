@@ -18,6 +18,5 @@ services:
       - "RAILS_ENV=production"
       - "SECRET_KEY_BASE=${SECRET_KEY_BASE}"
       - "DB_HOST=db"
-      - "DB_PASSWORD=${POSTGRES_PASSWORD}"
     ports:
       - "${WEB_PORT}:80"
