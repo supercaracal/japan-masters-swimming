@@ -1,7 +1,16 @@
 ---
 version: "3"
 services:
-  ap:
+  db:
+    build:
+      context: "./docker/db"
+      args:
+        - "BASE_BACKUP_FILE=swim_db_basebackup_${BASE_BACKUP_DATE}.tar.gz"
+    environment:
+      - "POSTGRES_PASSWORD=${POSTGRES_PASSWORD}"
+    ports:
+      - "${DB_PORT}:5432"
+  web:
     image: "supercaracal/amazon-linux-rails-app"
     depends_on:
       - "db"
@@ -10,17 +19,8 @@ services:
       - "BRANCH=master"
       - "RAILS_ENV=production"
       - "SECRET_KEY_BASE=${SECRET_KEY_BASE}"
-      - "HOST_DB=db"
-      - "PASSWORD_DB=${POSTGRES_PASSWORD}"
+      - "DB_HOST=db"
+      - "DB_PORT=${DB_PORT}"
+      - "DB_PASSWORD=${POSTGRES_PASSWORD}"
     ports:
-      - "${PORT_AP}:80"
-  db:
-    build:
-      context: "./docker/db"
-      args:
-        - "BASE_BACKUP_FILE=swim_db_basebackup_${BASE_BACKUP_DATE}.tar.gz"
-    environment:
-      - "POSTGRES_PASSWORD=${POSTGRES_PASSWORD}"
-      - "PGDATA=/var/lib/postgresql/swim"
-    ports:
-      - "${PORT_DB}:5432"
+      - "${WEB_PORT}:80"
