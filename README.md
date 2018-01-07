@@ -3,8 +3,8 @@
 ## Badges
 
 [![Build Status](https://travis-ci.org/supercaracal/japan-masters-swimming.svg?branch=master)](https://travis-ci.org/supercaracal/japan-masters-swimming)
-[![Code Climate](https://codeclimate.com/github/supercaracal/japan-masters-swimming/badges/gpa.svg)](https://codeclimate.com/github/supercaracal/japan-masters-swimming)
-[![Test Coverage](https://codeclimate.com/github/supercaracal/japan-masters-swimming/badges/coverage.svg)](https://codeclimate.com/github/supercaracal/japan-masters-swimming/coverage)
+[![Maintainability](https://api.codeclimate.com/v1/badges/90104080911b77100ef7/maintainability)](https://codeclimate.com/github/supercaracal/japan-masters-swimming/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/90104080911b77100ef7/test_coverage)](https://codeclimate.com/github/supercaracal/japan-masters-swimming/test_coverage)
 [![Issue Count](https://codeclimate.com/github/supercaracal/japan-masters-swimming/badges/issue_count.svg)](https://codeclimate.com/github/supercaracal/japan-masters-swimming/issues)
 
 ## What's this?
