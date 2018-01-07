@@ -1,6 +1,5 @@
 require 'rails_helper'
 
-# rubocop:disable Metrics/BlockLength
 describe Tasks::Import::TdsystemScraper do
   let(:scraper) { described_class.new }
   let(:data) { scraper.scrape(html) }
@@ -19,7 +18,7 @@ describe Tasks::Import::TdsystemScraper do
     end
   end
 
-  context "When hobby swimmer's result included" do
+  context "when hobby swimmer's result included" do
     let(:event_name) { '男子100m自由形' }
     let(:results) do
       [
@@ -46,7 +45,7 @@ describe Tasks::Import::TdsystemScraper do
     include_examples 'Can get scraped data'
   end
 
-  context 'When no one win a prize' do
+  context 'when no one win a prize' do
     let(:event_name) { '女子400m自由形' }
     let(:results) do
       [
@@ -65,7 +64,7 @@ describe Tasks::Import::TdsystemScraper do
     include_examples 'Can get scraped data'
   end
 
-  context "When athlete swimmer's result included" do
+  context "when athlete swimmer's result included" do
     let(:event_name) { '男子100m自由形' }
     let(:results) do
       [
