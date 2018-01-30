@@ -15,5 +15,6 @@ script:
   - "RAILS_ENV=test bin/rails db:migrate:reset"
   - "bin/rspec"
   - "bin/rubocop --fail-level=W"
+  - "bin/slim-lint app/views"
 after_success:
   - "bin/bundle exec codeclimate-test-reporter"

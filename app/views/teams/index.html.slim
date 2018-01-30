@@ -9,7 +9,7 @@ h3#team-header = title
 - grouped_teams = @teams.group_by { |team| team.name.first }
 
 ul.pagination.mt-3.team-anchor
-  - grouped_teams.keys.each do |initial|
+  - grouped_teams.each_key do |initial|
     li.page-item
       = link_to initial, teams_path(anchor: "team-initial-#{initial}"), class: 'page-link'
 
